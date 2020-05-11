@@ -1,0 +1,24 @@
+:root {
+  background-color: var(--near-white);
+  color: var(--near-black);
+
+  font-size: var(--font-size);
+  @media (--breakpoint-medium) {
+    font-size: var(--font-size-m);
+  }
+  @media (--breakpoint-large) {
+    font-size: var(--font-size-l);
+  }
+}
+.sans-serif { font-family: var(--sans-serif); }
+.serif { font-family: var(--serif); }
+.monospace { font-family: var(--monospace); }
+
+
+.primary {
+  color: var(--primary);
+
+  svg {
+    fill: currentColor;
+  }
+}

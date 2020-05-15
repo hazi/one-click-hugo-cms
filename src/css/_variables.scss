@@ -30,7 +30,7 @@ $theme-colors: (
   "primary": $primary,
   "highlight": $highlight,
   "black": $black,
-  "near-black": color.mix($black, $gray, $weight: 80%),
+  "near-black": color.mix($black, $gray, $weight: 93%),
   "dark-gray": color.mix($black, $gray, $weight: 50%),
   "mid-gray": color.mix($black, $gray, $weight: 20%),
   "gray": $gray,
@@ -38,7 +38,7 @@ $theme-colors: (
   "light-silver": color.mix($gray, $white, $weight: 60%),
   "moon-gray": color.mix($gray, $white, $weight: 50%),
   "light-gray": color.mix($gray, $white, $weight: 30%),
-  "near-white": color.mix($gray, $white, $weight: 10%),
+  "near-white": color.mix($gray, $white, $weight: 7%),
   "white": $white,
 );
 :root {
@@ -69,7 +69,7 @@ $theme-colors: (
     "primary": $primary,
     "highlight": $highlight,
     "black": $black,
-    "near-black": color.mix($black, $gray, $weight: 80%),
+    "near-black": color.mix($black, $gray, $weight: 93%),
     "dark-gray": color.mix($black, $gray, $weight: 50%),
     "mid-gray": color.mix($black, $gray, $weight: 20%),
     "gray": $gray,
@@ -77,7 +77,7 @@ $theme-colors: (
     "light-silver": color.mix($gray, $white, $weight: 60%),
     "moon-gray": color.mix($gray, $white, $weight: 50%),
     "light-gray": color.mix($gray, $white, $weight: 30%),
-    "near-white": color.mix($gray, $white, $weight: 10%),
+    "near-white": color.mix($gray, $white, $weight: 7%),
     "white": $white,
   );
 

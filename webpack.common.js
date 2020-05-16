@@ -9,6 +9,7 @@ module.exports = {
   entry: {
     main: path.join(__dirname, "src", "index.js"),
     cms: path.join(__dirname, "src", "js", "cms.js"),
+    app: path.join(__dirname, "src", "js", "app.js"),
   },
 
   output: {
@@ -30,7 +31,17 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         exclude: /node_modules/,
-        use: ["style-loader", MiniCssExtractPlugin.loader, "css-loader", "postcss-loader", "sass-loader"]
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2, // 0 => no loaders (default); 1 => postcss-loader; 2 => postcss-loader, sass-loader
+            },
+          },
+          "postcss-loader",
+          "sass-loader"
+        ]
       }
     ]
   },

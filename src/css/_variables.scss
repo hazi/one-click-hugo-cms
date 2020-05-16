@@ -12,17 +12,17 @@
   --serif: athelas, serif;
   --monospace: SFMono, consolas, monaco, monospace;
 
-  --font-size: 17px;
-  --font-size-m: 18px;
-  --font-size-l: 19px;
+  --font-size: 18px;
+  --font-size-m: 20px;
+  --font-size-l: 22px;
 }
 
-/* Color */
+/* Key Colors */
 $black: #000;
 $gray: rgb(111, 114, 117);
 $white: #fff;
-$primary: rgba(239,129,6,1);
-$highlight: rgba(255,155,4,1);
+$primary: #f40;
+$highlight: #fed5c6;
 $alpha-list: ("90": .9, "80": .8, "70": .7, "60": .6, "50": .5, "40": .4, "30": .3,
               "20": .2, "10": .1, "05": .05, "025": .025, "0125": .0125);
 
@@ -57,13 +57,13 @@ $theme-colors: (
   }
 }
 
-
+/* Key Colors (dark mode) */
 @media (prefers-color-scheme: dark) {
   $black: #fff;
   $gray: rgb(111, 114, 117);
   $white: #000;
-  $primary: rgb(253,141,14);
-  $highlight: rgb(255,155,4);
+  $primary: #f40;
+  $highlight: #fed5c6;
 
   $theme-colors: (
     "primary": $primary,
@@ -97,6 +97,7 @@ $theme-colors: (
   }
 }
 
+/* Color map */
 :root {
   --dark-red:  #e7040f;
   --red:  #ff4136;
@@ -123,4 +124,18 @@ $theme-colors: (
   --washed-green:  #e8fdf5;
   --washed-yellow:  #fffceb;
   --washed-red:  #ffdfdf;
+}
+
+/* Gray */
+:root {
+  @each $name, $num in $alpha-list {
+    $g: color.change($gray, $alpha: $num);
+    --gray-#{$name}: #{$g};
+
+    .gray-#{$name} { color:var(--gray-#{$name}) }
+    .bg-gray-#{$name} { background-color:var(--gray-#{$name}) }
+    .hover-gray-#{$name}:hover, .hover-gray-#{$name}:focus { color:var(--gray-#{$name}) }
+    .hover-bg-gray-#{$name}:hover, .hover-bg-gray-#{$name}:focus { background-color:var(--gray-#{$name}) }
+    .b--gray-#{$name} { border-color:var(--gray-#{$name}) }
+  }
 }

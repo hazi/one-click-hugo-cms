@@ -18,83 +18,71 @@
 }
 
 /* Key Colors */
-$black: #000;
-$gray: rgb(111, 114, 117);
-$white: #fff;
 $primary: #f40;
 $highlight: #fed5c6;
-$alpha-list: ("90": .9, "80": .8, "70": .7, "60": .6, "50": .5, "40": .4, "30": .3,
-              "20": .2, "10": .1, "05": .05, "025": .025, "0125": .0125);
+$complement: color.complement($primary);
+$black: #000;
+$gray: color.mix(#777, $complement, $weight: 97%);
+$white: #fff;
 
 $theme-colors: (
   "primary": $primary,
   "highlight": $highlight,
+  "complement": $complement,
   "black": $black,
   "near-black": color.mix($black, $gray, $weight: 93%),
   "dark-gray": color.mix($black, $gray, $weight: 50%),
-  "mid-gray": color.mix($black, $gray, $weight: 20%),
+  "mid-gray": color.mix($black, $gray, $weight: 12%),
   "gray": $gray,
   "silver": color.mix($gray, $white, $weight: 80%),
   "light-silver": color.mix($gray, $white, $weight: 60%),
   "moon-gray": color.mix($gray, $white, $weight: 50%),
-  "light-gray": color.mix($gray, $white, $weight: 30%),
+  "light-gray": color.mix($gray, $white, $weight: 12%),
   "near-white": color.mix($gray, $white, $weight: 7%),
   "white": $white,
 );
-:root {
-  @each $key, $color in $theme-colors {
-    --#{$key}: #{$color};
-  }
-}
+@include mapToCssVar($theme-colors);
 
-:root {
-  @each $name, $num in $alpha-list {
-    $b: color.change($black, $alpha: $num);
-    $w: color.change($white, $alpha: $num);
+@include createColorAlphaSet("black", $black);
+@include createColorAlphaSet("white", $white);
+@include createColorAlphaSet("gray", $gray);
 
-    --black-#{$name}: #{$b};
-    --white-#{$name}: #{$w};
-  }
-}
+@include createColorClassSet("gray", $gray);
+@include createColorClassSet("complement", $complement);
 
 /* Key Colors (dark mode) */
 @media (prefers-color-scheme: dark) {
-  $black: #fff;
-  $gray: rgb(111, 114, 117);
-  $white: #000;
   $primary: #f40;
   $highlight: #fed5c6;
+  $complement: color.complement($primary);
+  $black: #fff;
+  $gray: color.mix(#777, $complement, $weight: 97%);
+  $white: #000;
 
   $theme-colors: (
     "primary": $primary,
     "highlight": $highlight,
+    "complement": $complement,
     "black": $black,
     "near-black": color.mix($black, $gray, $weight: 93%),
     "dark-gray": color.mix($black, $gray, $weight: 50%),
-    "mid-gray": color.mix($black, $gray, $weight: 20%),
+    "mid-gray": color.mix($black, $gray, $weight: 12%),
     "gray": $gray,
     "silver": color.mix($gray, $white, $weight: 80%),
     "light-silver": color.mix($gray, $white, $weight: 60%),
     "moon-gray": color.mix($gray, $white, $weight: 50%),
-    "light-gray": color.mix($gray, $white, $weight: 30%),
-    "near-white": color.mix($gray, $white, $weight: 7%),
+    "light-gray": color.mix($gray, $white, $weight: 23%),
+    "near-white": color.mix($gray, $white, $weight: 15%),
     "white": $white,
   );
+  @include mapToCssVar($theme-colors);
 
-  :root {
-    @each $key, $color in $theme-colors {
-      --#{$key}: #{$color};
-    }
-  }
-  :root {
-    @each $name, $num in $alpha-list {
-      $b: color.change($black, $alpha: $num);
-      $w: color.change($white, $alpha: $num);
+  @include createColorAlphaSet("black", $black);
+  @include createColorAlphaSet("white", $white);
+  @include createColorAlphaSet("gray", $gray);
 
-      --black-#{$name}: #{$b};
-      --white-#{$name}: #{$w};
-    }
-  }
+  @include createColorClassSet("gray", $gray);
+  @include createColorClassSet("complement", $complement);
 }
 
 /* Color map */
@@ -124,18 +112,4 @@ $theme-colors: (
   --washed-green:  #e8fdf5;
   --washed-yellow:  #fffceb;
   --washed-red:  #ffdfdf;
-}
-
-/* Gray */
-:root {
-  @each $name, $num in $alpha-list {
-    $g: color.change($gray, $alpha: $num);
-    --gray-#{$name}: #{$g};
-
-    .gray-#{$name} { color:var(--gray-#{$name}) }
-    .bg-gray-#{$name} { background-color:var(--gray-#{$name}) }
-    .hover-gray-#{$name}:hover, .hover-gray-#{$name}:focus { color:var(--gray-#{$name}) }
-    .hover-bg-gray-#{$name}:hover, .hover-bg-gray-#{$name}:focus { background-color:var(--gray-#{$name}) }
-    .b--gray-#{$name} { border-color:var(--gray-#{$name}) }
-  }
 }

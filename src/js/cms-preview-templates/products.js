@@ -16,7 +16,7 @@ export default class PostPreview extends React.Component {
     return <div>
       <Jumbotron image={image} title={entry.getIn(["data", "title"])} />
 
-      <div className="bg-off-white pv4">
+      <div className="bg-near-white pv4">
         <div className="ph3 mw7 center">
           <h2 className="f2 b lh-title mb2">{entry.getIn(["data", "intro", "heading"])}</h2>
           <p className="mb4 mw6">{entry.getIn(["data", "intro", "description"])}</p>
@@ -56,16 +56,16 @@ export default class PostPreview extends React.Component {
 
       <div className="pb4">
         {(entry.getIn(['data', 'testimonials']) || []).map((testimonial, index) => <div className="center mb3 ph3" key={index}>
-        	<blockquote className="bg-grey-1 primary pa3 mb3 br1 b mw6 center">
+        	<blockquote className="bg-light-gray primary pa3 mb3 br1 b mw6 center">
         		<p className="f4 mb0">“{testimonial.get('quote')}”</p>
-        		<cite className="tr db grey-3">{testimonial.get('author')}</cite>
+        		<cite className="tr db mid-gray">{testimonial.get('author')}</cite>
         	</blockquote>
         </div>)}
       </div>
 
       <img src={getAsset(entry.getIn(['data', 'full_image']))} alt="" className="db w-100"/>
 
-      <div className="bg-off-white pv4 ph3">
+      <div className="bg-near-white pv4 ph3">
       	<div className="mw7 center">
 
       		<h2 className="f2 b lh-title mb3">{entry.getIn(['data', 'pricing', 'heading'])}</h2>
@@ -75,7 +75,7 @@ export default class PostPreview extends React.Component {
             {(entry.getIn(['data', 'pricing', 'plans']) || []).map((plan, index) => <div className="w-33-ns ph2" key={index}>
               <div className="ph2">
 
-              	<h3 className="b f5 grey-3 tc lh-title mb3">{plan.get('plan')}</h3>
+              	<h3 className="b f5 mid-gray tc lh-title mb3">{plan.get('plan')}</h3>
 
               	<p className="primary f1 b tc lh-title center">
               		<span className="f4">$</span>{plan.get('price')}

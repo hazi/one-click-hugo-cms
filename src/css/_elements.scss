@@ -1,0 +1,14 @@
+:focus {
+  outline: solid 2px var(--primary)
+}
+
+input, textarea, fieldset, button {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+a {
+  color: inherit
+}

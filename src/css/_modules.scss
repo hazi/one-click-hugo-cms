@@ -1,0 +1,54 @@
+@use "sass:color";
+@use "sass:map";
+
+$alpha-list: (
+  "90": .9, "80": .8, "70": .7, "60": .6, "50": .5, "40": .4, "30": .3,
+  "20": .2, "10": .1, "05": .05, "025": .025, "0125": .0125
+);
+
+/* Create a color alpha channel variation CSS variable */
+@mixin createColorAlphaSet($name, $color) {
+  :root {
+    /* #{$name} alpha */
+    @each $alpha-name, $alpha-num in $alpha-list {
+      $alpha-color: color.change($color, $alpha: $alpha-num);
+      --#{$name}-#{$alpha-name}: #{$alpha-color};
+    }
+  }
+}
+
+/* Create a class variation of a color */
+@mixin createColorClassSet($name, $color) {
+  /* #{$name} alpha color */
+  @each $alpha-name, $alpha-num in $alpha-list {
+    .#{$name}-#{$alpha-name} { color:var(--#{$name}-#{$alpha-name}) }
+  }
+
+  /* #{$name} background color */
+  @each $alpha-name, $alpha-num in $alpha-list {
+    .bg-#{$name}-#{$alpha-name} { background-color:var(--#{$name}-#{$alpha-name}) }
+  }
+
+  /* #{$name} hover */
+  @each $alpha-name, $alpha-num in $alpha-list {
+    .hover-#{$name}-#{$alpha-name}:hover, .hover-#{$name}-#{$alpha-name}:focus { color:var(--#{$name}-#{$alpha-name}) }
+  }
+
+  /* #{$name} hover background */
+  @each $alpha-name, $alpha-num in $alpha-list {
+    .hover-bg-#{$name}-#{$alpha-name}:hover, .hover-bg-#{$name}-#{$alpha-name}:focus { background-color:var(--#{$name}-#{$alpha-name}) }
+  }
+
+  /* #{$name} border color */
+  @each $alpha-name, $alpha-num in $alpha-list {
+    .b--#{$name}-#{$alpha-name} { border-color:var(--#{$name}-#{$alpha-name}) }
+  }
+}
+
+@mixin mapToCssVar($map) {
+  :root {
+    @each $key, $var in $map {
+      --#{$key}: #{$var};
+    }
+  }
+}

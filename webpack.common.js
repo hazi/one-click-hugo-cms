@@ -58,9 +58,10 @@ module.exports = {
       ],
     }),
     new HtmlWebpackPlugin({
+      inject: false,
+      chunks: ['cms'],
       filename: 'admin/index.html',
       template: 'src/cms.html',
-      inject: false,
     }),
   ]
 };

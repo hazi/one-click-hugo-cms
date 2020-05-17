@@ -52,13 +52,11 @@ module.exports = {
       path: path.join(process.cwd(), "site/data"),
       prettyPrint: true
     }),
-    new CopyWebpackPlugin([
-      {
-        from: "./src/fonts/",
-        to: "fonts/",
-        flatten: true
-      }
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "./src/fonts/", to: "fonts/", flatten: true },
+      ],
+    }),
     new HtmlWebpackPlugin({
       inject: false,
       chunks: ['cms'],

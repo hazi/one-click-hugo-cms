@@ -1,29 +1,42 @@
-# Hugo template for Netlify CMS with Netlify Identity
+# Netlify CMS + HUGO Template
 
-This is a small business template built with [Victor Hugo](https://github.com/netlify/victor-hugo) and [Netlify CMS](https://github.com/netlify/netlify-cms), designed and developed by [Darin Dimitroff](http://www.darindimitroff.com/), [spacefarm.digital](https://www.spacefarm.digital).
+This is a small business template.
+Fork from [netlify\-templates/one\-click\-hugo\-cms: Hugo template with Netlify CMS](https://github.com/netlify-templates/one-click-hugo-cms)
+
+This template is a template with the minimum changes I would like to make to the site.
+
+Differences from the original form template
+
+* Update to the latest package as much as possible
+* Style
+  * Discard the modified CSS framework
+  * Support for dark mode
+  * Support for Sass(SCSS)
+
+Live Demo (master): https://clever-bassi-f657ce.netlify.app/
 
 ## Getting started
 
-Use our deploy button to get your own copy of the repository. 
+Use the deploy button to get your site up and running quickly!
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/one-click-hugo-cms&stack=cms)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/hazi/one-click-hugo-cms&stack=cms)
 
-This will setup everything needed for running the CMS:
-
-* A new repository in your GitHub account with the code
-* Full Continuous Deployment to Netlify's global CDN network
-* Control users and access with Netlify Identity
-* Manage content with Netlify CMS
-
-Once the initial build finishes, you can invite yourself as a user. Go to the Identity tab in your new site, click "Invite" and send yourself an invite.
-
-Now you're all set, and you can start editing content!
+Once the site is set up, you will receive an email invitation, so don't forget to register your password.
 
 ## Local Development
 
-Clone this repository, and run `yarn` or `npm install` from the new folder to install all required dependencies.
+```
+$ git clone git@github.com:YOUR/SITE.git
+$ cd SITE
+$ yarn install
+$ yarn start
+```
 
-Then start the development server with `yarn start` or `npm start`.
+## Directory
+
+- `/src` : css, js, font source directory
+- `/site` : Hugo source directory
+- `/dist` : Distribution directory
 
 ## Layouts
 
@@ -33,7 +46,18 @@ Use Hugo’s `dict` functionality to feed content into partials and avoid repeat
 
 ## CSS
 
-The template uses a custom fork of Tachyons and PostCSS with cssnext and cssnano. To customize the template for your brand, refer to `src/css/imports/_variables.css` where most of the important global variables like colors and spacing are stored.
+All CSS is linked from `src/css/main.scss`.
+You can change the theme color with `src/css/_variables.scss`.
+
+Framework
+
+* [sanitize.css](https://github.com/csstools/sanitize.css)
+* [tachyons](https://github.com/tachyons-css/tachyons)
+
+Tools
+
+* [PostCSS](https://github.com/postcss/postcss) (Look at `postcss.config.js`)
+* [Dart Sass](https://github.com/sass/dart-sass)
 
 ## SVG
 
